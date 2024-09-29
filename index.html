@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Web Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous"/>
+    <title>Responsive E-commerce Web Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-brands-400.ttf" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
         * {
             margin: 0;
@@ -14,15 +14,14 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f5f9;
+            background-color:#131921;
             color: #333;
         }
 
-        /* Header */
         header {
             background-color: #131921;
             color: black;
-            padding: 10px 20px;
+            padding: 8px 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -30,39 +29,26 @@
         }
 
         .header-top {
-            width: 100%;
             display: flex;
-            flex-direction: column;
+            width: 100%;
+            justify-content: space-between;
             align-items: center;
-        }
-
-        @media(min-width: 768px) {
-            .header-top {
-                flex-direction: row;
-                justify-content: space-between;
-            }
+            padding: 8px 0;
         }
 
         .logo {
             background-image: url("https://companieslogo.com/img/orig/BABA.D-3563f017.png?t=1720244490");
             background-size: contain; 
             background-repeat: no-repeat;
-            width: 250px; 
+            width: 200px; 
             height: 70px; 
-            margin-top: 10px;
         }
 
         .search-bar {
             display: flex;
-            width: 95%;
-            max-width: 800px;
-            margin-top: 10px;
-        }
-
-        @media(min-width: 768px) {
-            .search-bar {
-                margin-top: 0;
-            }
+            flex: 1;
+            max-width: 700px;
+            margin-left: 15px;
         }
 
         .search-bar input[type="text"] {
@@ -84,7 +70,6 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-top: 10px;
         }
 
         .header-right a {
@@ -97,10 +82,8 @@
         .nav {
             width: 100%;
             background-color: #232f3e;
-            color: #232f3e;
             display: flex;
             justify-content: space-around;
-            flex-wrap: wrap;
             padding: 10px 0;
         }
 
@@ -114,13 +97,19 @@
             text-decoration: underline;
         }
 
-        /* Product Section */
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            color: #2b2b2b;
+        }
+
+        /* Responsive product container grid */
         .product-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
             padding: 40px;
-            background-color: #fff;
+            background-color: #fff; 
         }
 
         .product-card {
@@ -169,59 +158,37 @@
             color: #ff6b6b; 
         }
 
-        /* Footer */
         footer {
             background-color: #131921;
             color: #fff;
             text-align: center;
             padding: 10px;
-            position: relative;
-            bottom: 0;
             width: 100%;
         }
 
-        /* Responsive Adjustments */
+        /* Responsive styling for mobile */
         @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+            }
+
+            .search-bar {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
             .header-right {
                 flex-direction: column;
-                gap: 10px;
             }
 
-            .nav {
-                justify-content: space-around;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .product-container {
-                padding: 20px;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 20px;
+            .product-card img {
+                height: 150px;
             }
         }
 
-        @media (max-width: 480px) {
-            .header-right {
-                gap: 5px;
-            }
-
-            .search-bar input[type="text"] {
-                padding: 8px;
-            }
-
-            .search-bar button {
-                padding: 8px;
-            }
-
-            .product-container {
-                padding: 10px;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-top">
             <div class="logo"></div>
@@ -238,44 +205,39 @@
         </div>
     </header>
 
-    <!-- Navigation -->
     <nav class="nav">
-        <a href="#"><i class="fa-solid fa-bars"></i>  All</a>
-        <a href="#">Today's Deals</a>
-        <a href="#">Mobiles</a>
-        <a href="#">Fashion</a>
-        <a href="#">New </a>
-        <a href="#">Books</a>
-        <a href="#">Customer Service</a>
-        <a href="#">Gift Cards</a>
-        <a href="#">Sales <i class="fa-solid fa-caret-down"></i></a>
-        <a href="#">Sell</a>
+        <a href="#" data-category="all"><i class="fa-solid fa-bars"></i>  All</a>
+        <a href="#" data-category="men">Men</a>
+        <a href="#" data-category="women">Women</a>
+        <a href="#" data-category="fashion">Fashion</a>
+        <a href="#" data-category="gadgets">Electronic Gadgets</a>
+        <a href="#" data-category="service">Customer Service</a>
+        <a href="#" data-category="sell">Sell</a>
     </nav>
 
-    <!-- Products Section -->
     <section class="product-container" id="product-container"></section>
 
-    <!-- Footer -->
     <footer class="footer">
-        <p><b>Get to Know Us</b> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <b>Connect with Us</b><br>About Us &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-            <i class="fa-brands fa-facebook"></i> Facebook <br>
-            Amazon Science &nbsp &nbsp &nbsp &nbsp <i class="fa-brands fa-twitter"></i> Twitter<br>
-            Press Releases &nbsp &nbsp &nbsp <i class="fa-brands fa-instagram"></i> Instagram
+        <p><b>Get to Know Us</b>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <b>Connect with Us</b><br>About Us&nbsp &nbsp 
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<i class="fa-brands fa-facebook"></i> Facebook
+            <br>AliBaba Science &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp<i class="fa-brands fa-twitter"></i> Twitter<br>
+            Press Releases&nbsp &nbsp &nbsp &nbsp &nbsp <i class="fa-brands fa-instagram"></i> Instagram
         </p>
-        <p><center>Conditions of Use & Sale &nbsp &nbsp Privacy Notice &nbsp &nbsp Interest-Based Ads</center></p>
-        <p><center>&copy; 1996-2024, Amazon.com, Inc. or its affiliates</center></p>
+        <p><center>Conditions of Use & Sale  &nbsp &nbsp Privacy Notice  &nbsp &nbsp   Interest-Based Ads</center></p>
+        <p><center>&copy; 1996-2024, AliBaba.com, Inc. or its affiliates</center></p>
     </footer>
 
     <script>
         let productContainer = document.getElementById('product-container');
+        const categoryLinks = document.querySelectorAll('.nav a');
+
         function fetchProducts() {
             const url = 'https://fakestoreapi.com/products';
             fetch(url)
                 .then((response) => response.json())
                 .then((data) => {
-                    data = shuffleArray(data);
-                    let limitedProducts = data.slice(0, 15);  
-                    displayProducts(limitedProducts);
+                    // Initially display products on page load
+                    displayProducts(data.slice(0, 15));
                 })
                 .catch((error) => {
                     console.error('Error fetching products:', error);
@@ -292,19 +254,43 @@
         }
 
         function displayProducts(products) {
-            let html = '';
+            productContainer.innerHTML = '';
             products.forEach((product) => {
-                html += `
-                <div class="product-card">
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.innerHTML = `
                     <img src="${product.image}" alt="${product.title}">
                     <h2>${product.title}</h2>
-                    <p>${product.description.substring(0, 100)}...</p>
+                    <p>${product.description.slice(0, 50)}...</p>
                     <p class="price">$${product.price}</p>
-                </div>
                 `;
+                productContainer.appendChild(productCard);
             });
-            productContainer.innerHTML = html;
         }
+
+        function categoryClicked(category) {
+            const url = 'https://fakestoreapi.com/products';
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    let filteredProducts = data;
+                    if (category !== 'all') {
+                        filteredProducts = data.filter((product) =>
+                            product.category.toLowerCase().includes(category.toLowerCase())
+                        );
+                    }
+                    displayProducts(shuffleArray(filteredProducts).slice(0, 15));
+                })
+                .catch((error) => console.error('Error filtering products:', error));
+        }
+
+        categoryLinks.forEach((link) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = e.target.getAttribute('data-category');
+                categoryClicked(category);
+            });
+        });
 
         fetchProducts();
     </script>
